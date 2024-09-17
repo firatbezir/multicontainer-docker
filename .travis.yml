@@ -1,4 +1,3 @@
-language: generic
 sudo: required
 services:
   - docker
@@ -7,7 +6,7 @@ before_install:
   - docker build -t firatbezir/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true firatbezir/react-test npm test 
+  - docker run -e CI=true firatbezir/react-test npm run test 
 
 after_success:
   - docker build -t firatbezir/multi-client ./client
