@@ -20,3 +20,14 @@ after_success:
   - docker push firatbezir/multi-nginx
   - docker push firatbezir/multi-server
   - docker push firatbezir/multi-worker
+deploy:
+  provider: elasticbeanstalk
+  region: 'eu-north-1'
+  app: 'multicontainer-docker'
+  env: 'Multicontainer-docker-env'
+  bucket_name: 'elasticbeanstalk-eu-north-1-615299743652'
+  bucket_path: 'docker-multi'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
